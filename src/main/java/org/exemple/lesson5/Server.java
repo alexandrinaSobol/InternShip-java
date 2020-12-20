@@ -2,10 +2,8 @@ package org.exemple.lesson5;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exemplu.Person;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -25,7 +23,6 @@ public class Server {
             String string = dataInputStream.readUTF();
             ObjectMapper objectMapper = new ObjectMapper();
             Set<Person> persons = new HashSet<>(Arrays.asList(objectMapper.readValue(string, Person[].class)));
-
             persons.forEach(p -> {
                 LOGGER.info(p.getFirstName() + " " + p.getLastName());
             });
